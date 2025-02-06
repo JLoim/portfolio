@@ -22,6 +22,52 @@ header {
     text-align: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
+#floating-messages {
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 10%; /* Move to the top */
+    left: 10%; /* Move to the left */
+    width: auto; /* Adjust as needed */
+    max-height: 80vh; /* Limit the height */
+    overflow: auto; /* Enable scrolling if needed */
+    z-index: 1000; /* Ensure it's on top of everything */
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    align-items: flex-start; /* Align messages to the left */
+}
+
+.floating-message {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px; /* Space between messages */
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1em;
+    opacity: 0;
+    animation: slideInDown 0.5s forwards; /* Slide in animation */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.floating-message::before {
+    content: 'x'; /* Add a close button */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px); /* Start from above */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* Slide to original position */
+        opacity: 1;
+    }
+}
 
 main {
     flex: 1; /* Take up remaining space, pushing footer down */

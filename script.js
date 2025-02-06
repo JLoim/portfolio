@@ -42,4 +42,30 @@ async function fetchUpdates() {
 }
 
 // Call the function to fetch updates when the page loads
-window.addEventListener('load', fetchUpdates);
+window.addEventListener('load', function() {
+    fetchUpdates(); // Keep fetching updates
+
+    // Create floating messages
+    const messages = [
+        "Hey, name is Jonas, welcome to my little website",
+        "On the left you will find my hobbies, on the right my work portfolio",
+        "On the bottom is just what I am currently up to"
+    ];
+
+    const floatingMessagesContainer = document.getElementById('floating-messages');
+
+    messages.forEach((messageText, index) => {
+        setTimeout(() => {
+            const message = document.createElement('div');
+            message.classList.add('floating-message');
+            message.textContent = messageText;
+
+            // Add event listener to remove the message on click
+            message.addEventListener('click', function() {
+                message.remove();
+            });
+
+            floatingMessagesContainer.appendChild(message);
+        }, index * 5000); // Delay each message by index * 1000 milliseconds (1 second)
+    });
+});
