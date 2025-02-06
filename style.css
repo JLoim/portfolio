@@ -109,26 +109,3 @@ footer a {
     text-decoration: underline;
 }
 
-/* Add basic responsive design */
-@media (max-width: 768px) {
-    .split-container {
-        flex-direction: column;
-        height: auto;
-        position: static; /* Remove absolute positioning on small screens */
-    }
-
-    .split-side {
-        width: 100%;
-        padding: 1rem;
-        min-height: 200px; /* Minimum height for each side */
-    }
-
-    .center-image {
-        width: 80%; /* Adjust width for smaller screens */
-        max-height: 60vh; /* Adjust height for smaller screens */
-    }
-
-    .center-image img {
-        max-height: 300px; /* Adjust height for smaller screens */
-    }
-}
