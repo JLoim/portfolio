@@ -196,3 +196,102 @@ footer a {
         font-size: 0.8rem;
     }
 }
+#update-feed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+    list-style: none;
+    justify-content: center;
+}
+
+.update-item {
+    flex: 1 1 300px;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.update-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.update-item a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.update-item a:hover {
+    color: #add8e6;  /* Light blue tint */
+}
+
+
+/* Updates Page Specific Styles */
+.updates-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: clamp(1rem, 3vw, 2rem);
+    width: 100%;
+    margin: 0 auto; /* Add this line to center the container */
+    min-height: 100vh;
+    color: white;
+    text-align:justify;
+    display: flex; /* Use flexbox to center content vertically */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content to the top */
+}
+
+.back-link {
+    display: inline-block;
+    margin: clamp(0.75rem, 2vw, 1.5rem);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.back-link:hover {
+    background-color: rgba(216, 216, 216, 0.7); /* Darken the background on hover */
+}
+
+.update-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-date {
+    color: #add8e6;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.update-text {
+    color: white;
+    line-height: 1.6;
+}
+
+.loading {
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}

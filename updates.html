@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Updates & News</title>
+    
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="updates-container">
+        <h1>Updates & News</h1>
+        <div id="updates-list">
+            <div class="loading">Loading updates...</div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchAllUpdates() {
+            const sheetId = '1UKWdmLVrJKNPwMCJaBL_InNb0FYSZk5ePKq5k9hWlBY';
+            const sheetName = 'Website News';
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonString = text.substring(text.indexOf("(") + 1, text.lastIndexOf(")"));
+                const data = JSON.parse(jsonString);
+
+                const updates = [];
+
+                if (data.table && data.table.rows) {
+                    const rows = data.table.rows.slice(1); // Skip header row
+                    rows.forEach(row => {
+                        const date = row.c[0] ? row.c[0].v : '';
+                        const update = row.c[1] ? row.c[1].v : 'No Update';
+                        updates.push(`
+                            <div class="update-item">
+                                <div class="update-date">${date}</div>
+                                <div class="update-text">${update}</div>
+                            </div>
+                        `);
+                    });
+                }
+
+                const updatesList = document.getElementById('updates-list');
+                if (updatesList) {
+                    updatesList.innerHTML = updates.join('');
+                }
+
+            } catch (error) {
+                console.error('Error fetching updates:', error);
+                const updatesList = document.getElementById('updates-list');
+                if (updatesList) {
+                    updatesList.innerHTML = '<div class="update-item">Failed to load updates.</div>';
+                }
+            }
+        }
+
+        window.addEventListener('load', fetchAllUpdates);
+    </script>
+</body>
+</html>

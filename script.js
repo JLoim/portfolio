@@ -1,32 +1,34 @@
 // Function to fetch and display updates from Google Sheets
 async function fetchUpdates() {
-    const sheetId = '1UKWdmLVrJKNPwMCJaBL_InNb0FYSZk5ePKq5k9hWlBY'; // The correct Sheet ID
-    const sheetName = 'Website News'; // The correct Sheet Name
+    const sheetId = '1UKWdmLVrJKNPwMCJaBL_InNb0FYSZk5ePKq5k9hWlBY';
+    const sheetName = 'Website News';
     const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
 
     try {
         const response = await fetch(url);
         const text = await response.text();
-
-        // Extract the JSON data from the Google Visualization API response.
         const jsonString = text.substring(text.indexOf("(") + 1, text.lastIndexOf(")"));
         const data = JSON.parse(jsonString);
 
         const updates = [];
 
-        // Extract updates from the data
         if (data.table && data.table.rows) {
-            const rows = data.table.rows;
-            for (let i = 0; i < rows.length && i < 3; i++) { // Get the 3 most recent updates
+            const rows = data.table.rows.slice(1); // Skip header row
+            for (let i = 0; i < rows.length && i < 3; i++) {
                 const row = rows[i];
-                const date = row.c[0] ? row.c[0].v : 'No Date'; // Date column (assumes it's the first)
-                const update = row.c[1] ? row.c[1].v : 'No Update'; // Update column (assumes it's the second)
+                const date = row.c[0] ? row.c[0].v : '';
+                let update = row.c[1] ? row.c[1].v : 'No Update';
 
-                updates.push(`<li>${date}: ${update}</li>`);
+                // Truncate the update text if it's too long
+                const maxLength = 50; // Set the maximum length
+                if (update.length > maxLength) {
+                    update = update.substring(0, maxLength) + '...';
+                }
+
+                updates.push(`<li class="update-item"><a href="updates.html">${date} - ${update}</a></li>`);
             }
         }
 
-        // Display the updates in the footer
         const updateFeed = document.getElementById('update-feed');
         if (updateFeed) {
             updateFeed.innerHTML = updates.join('');
@@ -40,6 +42,7 @@ async function fetchUpdates() {
         }
     }
 }
+
 
 // Call the function to fetch updates when the page loads
 window.addEventListener('load', function() {
