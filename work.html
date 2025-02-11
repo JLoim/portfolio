@@ -1,119 +1,49 @@
-<style>
-    :root {
-      --primary: #fc6500;
-      --bg: #0a0a0a;
-    }
-    
-    body {
-      background: var(--bg);
-      color: #fff;
-      font-family: 'Space Mono', monospace;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    
-    h1, h2, h3 {
-      color: var(--primary);
-    }
-    
-    .section {
-      margin-bottom: 3rem;
-    }
-    
-    .automation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .process-node {
-      position: relative;
-      padding: 1.5rem;
-      border: 2px solid var(--primary);
-      border-radius: 8px;
-    }
-    
-    .process-node:hover {
-      background: rgba(255, 145, 1, 0.1);
-    }
-    
-    .skill-badge {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-      background: #1a1a1a;
-      border-radius: 20px;
-    }
-    
-    .skill-badge:hover {
-      transform: translateY(-3px);
-      box-shadow: 0px 0px 15px var(--primary);
-    }
-    
-    .skill-info {
-      display: none;
-    }
-    
-    .skill-badge:hover + .skill-info {
-      display: block;
-    }
-    
-    .about-me, .experience, .education {
-      padding: 1.5rem;
-    }
-    
-    .experience-item, .education-item {
-      margin-bottom: 1rem;
-    }
-    
-    .experience-item h4, .education-item h4 {
-      margin-bottom: .5rem;
-    }
-    .experience, .education {
-
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-}
-
-.experience-item, .education-item {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: #1a1a1a;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.experience-item:hover, .education-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px var(--primary);
-}
-
-.experience-item h4, .education-item h4 {
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.experience-item p, .education-item p {
-  color: #ccc;
-  margin: 0.2rem 0;
-}
-    </style>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
   <div class="container">
   
   <!-- About Me Section -->
   <div class="section about-me">
-    <h2>About Me</h2>
-    <p>I'm passionate about optimizing processes and automating repetitive tasks. My goal is to streamline workflows so teams can focus on high-value creative work that drives company vision forward.</p>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>I get a kick out of making things work better. Whether it's automating a tedious data entry process or building a tool that saves the marketing team hours each week, I love finding smart solutions to everyday problems using tools we already own. I'm probably writing power automate flows as you read this!</p>
+      </div>
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-button close"></span>
+            <span class="terminal-button minimize"></span>
+            <span class="terminal-button maximize"></span>
+          </div>
+          <div class="terminal-title">profile.sql</div>
+        </div>
+        <div class="terminal-content">
+          <pre><code>SELECT 
+    'Jonas Loimer' as name,
+    'Marketing Assistant' as role,
+    'Vienna, Austria' as location,
+    ARRAY[
+        'Process Automation',
+        'Digital Marketing',
+        'Web Development'
+    ] as interests,
+    JSON_OBJECT(
+        'marketing', ARRAY['Adobe Suite', 'Google Ads'],
+        'automation', ARRAY['Power Automate', 'Power BI'],
+        'development', ARRAY['HTML', 'CSS', 'JavaScript']
+    ) as skills
+FROM profile;</code></pre>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Skills Showcase -->
@@ -123,20 +53,20 @@
       <div class="process-node">
         <h3>Design & Marketing</h3>
         <span class="skill-badge">Adobe Creative Suite</span>
-        <div class="skill-info">Expert in Photoshop, Illustrator, and InDesign for creating stunning visuals.</div>
+        <div class="skill-info">I am pretty well verse in Premiere for our companies video projects, and if something needs a tweak in illustrator or photoshop I know my way around those too.</div>
         <span class="skill-badge">Google Ads</span>
-        <div class="skill-info">Proficient in creating and managing effective ad campaigns.</div>
-        <span class="skill-badge">CMS</span>
-        <div class="skill-info">Experienced in various Content Management Systems for efficient web content handling.</div>
+        <div class="skill-info">Absolutely love working in the Google Ads Editor to manage huge portfolios. I have most of my experience with search ads, not display ads, but in those my current company is doing quite well.</div>
+        <span class="skill-badge">Content Management Systems</span>
+        <div class="skill-info">I used a ton of wordpress in my private life and now have grown pretty close with Typo3 in my work life. Though this website is written without the help of any CMS just pure html,css and javascript. </div>
       </div>
       <div class="process-node">
         <h3>Data & Automation</h3>
         <span class="skill-badge">Microsoft Power Automate</span>
-        <div class="skill-info">Automating workflows and integrating various Microsoft services.</div>
+        <div class="skill-info">Something repetitve that happens regularly should often be automated. Check a contacts E-mail adress against our database of companies to match them up, send me an email when there's new files in this folder, automatically fill out my timetables with the right info when I press a shortcut. We have tens of thousands of contacts in a CRM database, if we'd need to do all these changes manually we'd never get anywhere. </div>
         <span class="skill-badge">Power BI</span>
-        <div class="skill-info">Creating insightful data visualizations and reports.</div>
+        <div class="skill-info">Let's build a dashboard once for our Social Media Channels so whenever the new year comes around we just need to switch out the CSV and get a fresh clean look at all the Data. Huge timesave each year and also useful for monthly recaps too which would usually take too much time. </div>
         <span class="skill-badge">Dynamics 365 CRM</span>
-        <div class="skill-info">Managing customer relationships and streamlining sales processes.</div>
+        <div class="skill-info"> Mostly in a b2b context I have had a lot of fun finding inefficiencies in an old CRM system. Which processes make sense and which ones do not? Do we need to add anything? Let's build a dashboard to visualize what is in there. Let's make sure our data quality is up to par (it often isn't!)</div>
       </div>
     </div>
   </div>
@@ -148,8 +78,13 @@
       <h4>Marketing Assistant</h4>
       <p>MIC Customs Solutions · Vienna, Austria</p>
       <p>March 2022 - Present</p>
-      <p>Specialized in database management, CMS administration, and marketing automation.</p>
-    </div>
+      <ul>
+        <li>Improved CRM efficiency through automation and data cleanup initiatives.</li>
+        <li>Managed and optimized our Google Ads portfolio, focusing on search campaigns.</li>
+        <li>Contributed to the design refresh of the company website, including coding interactive elements.</li>
+        <li>Edited videos for social media and internal communications.</li>
+        <li>Became a go-to resource for the team on digital tools and technologies.</li>
+      </ul> </div>
   </div>
 
   <!-- Education Section -->
@@ -159,12 +94,9 @@
       <h4>Diploma in Web Design & Digital Media</h4>
       <p>Höhere Graphische Bundes-Lehr- und Versuchsanstalt</p>
       <p>2018 - 2020</p>
+      <p>We built 3d models, edited videos and photos and built websites. A little bit of everything so one could specialize later on. I decided to stay an allarounder and head into marketing though.</p>
     </div>
-    <div class="education-item">
-      <h4>High School Diploma</h4>
-      <p>Schopenhauerstraße</p>
-      <p>2010 - 2018</p>
-    </div>
+
   </div>
 
 </div>
@@ -190,3 +122,5 @@ document.querySelectorAll('.process-node').forEach(node => {
   });
 });
 </script>
+</body>
+</html>

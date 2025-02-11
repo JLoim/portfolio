@@ -6,13 +6,16 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Mono', monospace;
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh; /* Ensure the footer sticks to the bottom */
     display: flex;
     flex-direction: column;
+    background: var(--background);
+    margin: 0;
+    padding: 0;
 }
 
 main {
@@ -209,6 +212,23 @@ h2 {
     .container {
         padding: 1rem;
     }
+
+    .automation-grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+
+    .process-node {
+        padding: 1rem;
+    }
+
+    .skill-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .about-me, .experience, .education {
+        padding: 1rem;
+    }
 }
 
 #skill-description {
@@ -275,7 +295,7 @@ h2 {
 
 .experience-item, .education-item {
     margin-bottom: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background: var(--card-bg);
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -288,10 +308,141 @@ h2 {
 
 .experience-item h4, .education-item h4 {
     color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.experience-item p, .education-item p {
+    color: var(--text);
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Style for company/institution name */
+.experience-item p:first-of-type, .education-item p:first-of-type {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Style for dates */
+.experience-item p:nth-of-type(2), .education-item p:nth-of-type(2) {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Style for description text and lists */
+.experience-item p:last-of-type, 
+.education-item p:last-of-type,
+.experience-item ul {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.experience-item ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.experience-item li {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.experience-item h4, .education-item h4 {
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .experience-item p, .education-item p {
     color: #ccc;
     margin: 0.2rem 0;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.about-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.terminal-window {
+    flex: 1;
+    background: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+}
+
+.terminal-header {
+    background: #323233;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+    margin-right: 15px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-button.close {
+    background: #FF5F56;
+}
+
+.terminal-button.minimize {
+    background: #FFBD2E;
+}
+
+.terminal-button.maximize {
+    background: #27C93F;
+}
+
+.terminal-title {
+    color: #9DA5B4;
+    font-size: 0.9em;
+}
+
+.terminal-content {
+    padding: 20px;
+    color: #ABB2BF;
+}
+
+.terminal-content pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Syntax highlighting for the JSON-like code */
+.terminal-content .string { color: #98C379; }
+.terminal-content .key { color: #E06C75; }
+.terminal-content .bracket { color: #ABB2BF; }
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .terminal-window {
+        width: 100%;
+        margin-top: 1rem;
+    }
 }
