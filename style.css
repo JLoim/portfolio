@@ -146,7 +146,8 @@ h2 {
 }
 
 .experience {
-    margin: 4rem 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .job {
@@ -174,7 +175,8 @@ h2 {
 }
 
 .education {
-    margin: 4rem 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .gradient-bg {
@@ -285,20 +287,13 @@ h2 {
     padding: 1.5rem;
 }
 
-.experience, .education {
-    border: 2px solid var(--primary);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-}
-
 .experience-item, .education-item {
     margin-bottom: 1.5rem;
     padding: 1.5rem;
     background: var(--card-bg);
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid var(--primary);
 }
 
 .experience-item:hover, .education-item:hover {
@@ -435,6 +430,16 @@ h2 {
 .terminal-content .string { color: #98C379; }
 .terminal-content .key { color: #E06C75; }
 .terminal-content .bracket { color: #ABB2BF; }
+
+/* SQL Syntax Highlighting */
+.terminal-content .sql-keyword { color: #c678dd; } /* Keywords like SELECT, FROM, AS */
+.terminal-content .sql-function { color: #61afef; } /* Functions like JSON_OBJECT */
+.terminal-content .sql-string { color: #98c379; } /* Strings */
+.terminal-content .sql-number { color: #d19a66; } /* Numbers */
+.terminal-content .sql-operator { color: #abb2bf; } /* Operators like +, -, * */
+.terminal-content .sql-comment { color: #5c6370; } /* Comments */
+.terminal-content .sql-table { color: #e5c07b; } /* Table names */
+.terminal-content .sql-column { color: #abb2bf; }
 
 @media (max-width: 768px) {
     .about-content {

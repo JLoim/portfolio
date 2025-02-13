@@ -14,7 +14,8 @@
     <div class="about-content">
       <div class="about-text">
         <h2>About Me</h2>
-        <p>I get a kick out of making things work better. Whether it's automating a tedious data entry process or building a tool that saves the marketing team hours each week, I love finding smart solutions to everyday problems using tools we already own. I'm probably writing power automate flows as you read this!</p>
+        <p>I get a kick out of making things work better. Whether it's automating a tedious data entry process or building a tool that saves the marketing team hours each week, I love finding smart solutions to everyday problems using tools we already own.
+           </p></br><p> Most of my friends call me a programmer in denial because I'm probably writing power automate flows as you read this!</p>
       </div>
       <div class="terminal-window">
         <div class="terminal-header">
@@ -26,21 +27,21 @@
           <div class="terminal-title">profile.sql</div>
         </div>
         <div class="terminal-content">
-          <pre><code>SELECT 
-    'Jonas Loimer' as name,
-    'Marketing Assistant' as role,
-    'Vienna, Austria' as location,
-    ARRAY[
-        'Process Automation',
-        'Digital Marketing',
-        'Web Development'
-    ] as interests,
-    JSON_OBJECT(
-        'marketing', ARRAY['Adobe Suite', 'Google Ads'],
-        'automation', ARRAY['Power Automate', 'Power BI'],
-        'development', ARRAY['HTML', 'CSS', 'JavaScript']
-    ) as skills
-FROM profile;</code></pre>
+          <pre><code class="language-sql"><span class="sql-keyword">SELECT</span> 
+    <span class="sql-string">'Jonas Loimer'</span> <span class="sql-keyword">as</span> <span class="sql-column">name</span>,
+    <span class="sql-string">'Marketing Operations'</span> <span class="sql-keyword">as</span> <span class="sql-column">role</span>,
+    <span class="sql-string">'Vienna, Austria'</span> <span class="sql-keyword">as</span> <span class="sql-column">location</span>,
+    <span class="sql-keyword">ARRAY</span>[
+        <span class="sql-string">'Process Automation'</span>,
+        <span class="sql-string">'Digital Marketing'</span>,
+        <span class="sql-string">'Data Analytics'</span>
+    ] <span class="sql-keyword">as</span> <span class="sql-column">interests</span>,
+    <span class="sql-function">JSON_OBJECT</span>(
+        <span class="sql-string">'marketing'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Adobe Suite'</span>, <span class="sql-string">'CMS'</span>],
+        <span class="sql-string">'automation'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Automate'</span>, <span class="sql-string">'Power BI'</span>],
+        <span class="sql-string">'analytics'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'POWER BI'</span>, <span class="sql-string">'Superset'</span>, <span class="sql-string">'SQL'</span>]
+    ) <span class="sql-keyword">as</span> <span class="sql-column">skills</span>
+<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;</code></pre>
         </div>
       </div>
     </div>
@@ -102,16 +103,21 @@ FROM profile;</code></pre>
 </div>
 
 <script>
+let lastVisibleInfo = null;
+
 document.querySelectorAll('.skill-badge').forEach(badge => {
   badge.addEventListener('mouseover', () => {
+    // Hide previous info if it exists and is different from current
+    if (lastVisibleInfo && lastVisibleInfo !== badge.nextElementSibling) {
+      lastVisibleInfo.style.display = 'none';
+    }
+    // Show current info
     badge.nextElementSibling.style.display = 'block';
-  });
-  badge.addEventListener('mouseout', () => {
-    badge.nextElementSibling.style.display = 'none';
+    lastVisibleInfo = badge.nextElementSibling;
   });
 });
 
-// Add a simple animation to process nodes
+// Process nodes animation (unchanged)
 document.querySelectorAll('.process-node').forEach(node => {
   node.addEventListener('mouseenter', () => {
     node.style.transform = 'scale(1.05)';
