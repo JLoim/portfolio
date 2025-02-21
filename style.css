@@ -504,3 +504,105 @@ h3 {
     z-index: 10;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+   
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    background-color: rgba(255, 145, 1, 0.1);
+    border-style:solid;
+    border-color:var(--primary);
+}
+
+.contact {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(252, 101, 0, 0.3);
+}
+
+.contact-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* New styles for button position and contact links */
+.back-button.contact-position {
+    position: static;
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+.contact-links.with-back-button {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .contact-links.with-back-button {
+        flex-direction: column;
+        align-items: center;
+    }
+    .back-button.contact-position {
+        position: static;
+    }
+}
