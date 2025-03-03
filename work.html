@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="index.html" class="back-button">Take me back</a>
+    <a href="index.html" class="back-button contact-link">Take me back</a>
   <div class="container">
   
   <!-- About Me Section -->
@@ -16,7 +16,7 @@
       <div class="about-text">
         <h2>About Me</h2>
         <p>I get a kick out of making things work better. Whether it's automating a tedious data entry process or building a tool that saves the marketing team hours each week, I love finding smart solutions to everyday problems using tools we already own.
-           </p></br><p> Most of my friends call me a programmer in denial because I'm probably writing power automate flows as you read this!</p>
+           </p></br><p> Most of my friends call me a programmer in denial because I'm probably writing Power Automate flows as you read this!</p>
       </div>
       <div class="terminal-window">
         <div class="terminal-header">
@@ -28,7 +28,8 @@
           <div class="terminal-title">profile.sql</div>
         </div>
         <div class="terminal-content">
-          <pre><code class="language-sql"><span class="sql-keyword">SELECT</span> 
+          <pre><code class="language-sql" id="terminal-code">
+<span class="sql-keyword">SELECT</span> 
     <span class="sql-string">'Jonas Loimer'</span> <span class="sql-keyword">as</span> <span class="sql-column">name</span>,
     <span class="sql-string">'Marketing Operations'</span> <span class="sql-keyword">as</span> <span class="sql-column">role</span>,
     <span class="sql-string">'Vienna, Austria'</span> <span class="sql-keyword">as</span> <span class="sql-column">location</span>,
@@ -42,7 +43,8 @@
         <span class="sql-string">'automation'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Automate'</span>, <span class="sql-string">'Power BI'</span>],
         <span class="sql-string">'analytics'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Bi'</span>, <span class="sql-string">'Superset'</span>, <span class="sql-string">'SQL'</span>]
     ) <span class="sql-keyword">as</span> <span class="sql-column">skills</span>
-<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;</code></pre>
+<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;
+          </code></pre>
         </div>
       </div>
     </div>
@@ -55,18 +57,18 @@
       <div class="process-node">
         <h3>Design & Marketing</h3>
         <span class="skill-badge">Adobe Creative Suite</span>
-        <div class="skill-info">I am pretty well versed in Premiere for our companies video projects, and if something needs a tweak in illustrator or photoshop I know my way around those too.</div>
+        <div class="skill-info">I am pretty well versed in Premiere for our companies video projects, and if something needs a tweak in Illustrator or Photoshop I know my way around those too.</div>
         <span class="skill-badge">Google Ads</span>
         <div class="skill-info">Absolutely love working in the Google Ads Editor to manage huge portfolios. I have most of my experience with search ads, not display ads, but in those my current company is doing quite well.</div>
         <span class="skill-badge">Content Management Systems</span>
-        <div class="skill-info">I used a ton of wordpress in my private life and now have grown pretty close with Typo3 in my work life. Though this website is written without the help of any CMS just pure html,css and javascript. </div>
+        <div class="skill-info">I used a ton of WordPress in my private life and now have grown pretty close with Typo3 in my work life. Though this website is written without the help of any CMS just pure html,css and JavaScript. </div>
       </div>
       <div class="process-node">
         <h3>Data & Automation</h3>
         <span class="skill-badge">Microsoft Power Automate</span>
-        <div class="skill-info">Something repetitve that happens regularly should often be automated. It is my favorite no code tool to get things done, especially in microsoft centric enviroments. </div>
+        <div class="skill-info">Something repetitive that happens regularly should often be automated. It is my favorite no code tool to get things done, especially in Microsoft centric environments. </div>
         <span class="skill-badge">Power BI</span>
-        <div class="skill-info">Let's build a dashboard once for our Social Media Channels so whenever the new year comes around we just need to switch out the CSV and get a fresh clean look at all the Data. Huge timesave each year and also useful for monthly recaps too which would usually take too much time. </div>
+        <div class="skill-info">Let's build a dashboard once for our Social Media Channels so whenever the new year comes around we just need to switch out the CSV and get a fresh clean look at all the Data. Huge time save each year and also useful for monthly recaps too which would usually take too much time. </div>
         <span class="skill-badge">Dynamics 365 CRM</span>
         <div class="skill-info"> Mostly in a b2b context I have had a lot of fun finding inefficiencies in an old CRM system. Which processes make sense and which ones do not? Do we need to add anything? Let's build a dashboard to visualize what is in there. Let's make sure our data quality is up to par.</div>
       </div>
@@ -75,7 +77,7 @@
 
   <!-- Experience Section -->
   <div class="section experience">
-    <h2>Experience</h2>
+    <h2>Work Experience</h2>
     <div class="experience-item">
       <h4>Marketing Assistant</h4>
       <p>MIC Customs Solutions · Vienna, Austria</p>
@@ -96,7 +98,7 @@
       <h4>Diploma in Web Design & Digital Media</h4>
       <p>Höhere Graphische Bundes-Lehr- und Versuchsanstalt</p>
       <p>2018 - 2020</p>
-      <p>We built 3d models, edited videos and photos and built websites. A little bit of everything so one could specialize later on. I decided to stay an allarounder and head into marketing though.</p>
+      <p>We built 3d models, edited videos and photos and built websites. A little bit of everything so one could specialize later on. Since I wasn't a fan of being my own boss or being an obsessive creative, I decided to stay an allrounder.</p>
     </div>
 
   </div>
@@ -120,54 +122,6 @@
 
 </div>
 
-<script>
-let lastVisibleInfo = null;
-
-document.querySelectorAll('.skill-badge').forEach(badge => {
-  badge.addEventListener('mouseover', () => {
-    // Hide previous info if it exists and is different from current
-    if (lastVisibleInfo && lastVisibleInfo !== badge.nextElementSibling) {
-      lastVisibleInfo.style.display = 'none';
-    }
-    // Show current info
-    badge.nextElementSibling.style.display = 'block';
-    lastVisibleInfo = badge.nextElementSibling;
-  });
-});
-
-// Process nodes animation (unchanged)
-document.querySelectorAll('.process-node').forEach(node => {
-  node.addEventListener('mouseenter', () => {
-    node.style.transform = 'scale(1.05)';
-    node.style.transition = 'transform 0.3s ease';
-  });
-  node.addEventListener('mouseleave', () => {
-    node.style.transform = 'scale(1)';
-  });
-});
-
-// Add new observer code
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const backButton = document.querySelector('.back-button');
-        const contactLinks = document.querySelector('.contact-links');
-        
-        if (entry.isIntersecting) {
-            backButton.classList.add('contact-position');
-            contactLinks.classList.add('with-back-button');
-            contactLinks.insertBefore(backButton, contactLinks.firstChild);
-        } else {
-            backButton.classList.remove('contact-position');
-            contactLinks.classList.remove('with-back-button');
-            document.body.insertBefore(backButton, document.body.firstChild);
-        }
-    });
-}, {
-    threshold: 0.5  // Trigger when 50% of the contact section is visible
-});
-
-// Start observing the contact section
-observer.observe(document.querySelector('.contact'));
-</script>
+<script src="terminal.js"></script>
 </body>
 </html>
