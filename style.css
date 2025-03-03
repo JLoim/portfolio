@@ -383,14 +383,12 @@ h3 {
     color: var(--text);
 }
 
-.experience-item h4, .education-item h4 {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-.experience-item p, .education-item p {
-    color: #ccc;
-    margin: 0.2rem 0;
+/* redundant styles removed */
+.experience-item p:last-of-type, 
+.education-item p:last-of-type{
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .section {
@@ -614,11 +612,4 @@ h3 {
     .back-button.contact-position {
         position: static;
     }
-}
-/* redundant styles removed */
-.experience-item p:last-of-type, 
-.education-item p:last-of-type{
-    color: var(--text);
-    font-size: 1rem;
-    line-height: 1.6;
 }
