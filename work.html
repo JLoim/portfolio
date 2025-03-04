@@ -28,9 +28,7 @@
           </div>
           <div class="terminal-title">profile.sql</div>
         </div>
-        <div class="terminal-content">
-          <pre><code class="language-sql" id="terminal-code">
-<span class="sql-keyword">SELECT</span> 
+        <div class="terminal-content"><pre><code class="language-sql" id="terminal-code"><span class="sql-keyword">SELECT</span> 
     <span class="sql-string">'Jonas Loimer'</span> <span class="sql-keyword">as</span> <span class="sql-column">name</span>,
     <span class="sql-string">'Marketing Operations'</span> <span class="sql-keyword">as</span> <span class="sql-column">role</span>,
     <span class="sql-string">'Vienna, Austria'</span> <span class="sql-keyword">as</span> <span class="sql-column">location</span>,
@@ -41,11 +39,10 @@
     ] <span class="sql-keyword">as</span> <span class="sql-column">interests</span>,
     <span class="sql-function">JSON_OBJECT</span>(
         <span class="sql-string">'marketing'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Adobe CS'</span>,<span class="sql-string">'CMS'</span>,<span class="sql-string">'GAds'</span>,<span class="sql-string">'CRM'</span>],
-        <span class="sql-string">'automation'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Automate'</span>, <span class="sql-string">'Power BI'</span>],
+        <span class="sql-string">'automation'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Automate'</span>, <span class="sql-string">'Dynamics 365'</span>],
         <span class="sql-string">'analytics'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Bi'</span>, <span class="sql-string">'Superset'</span>, <span class="sql-string">'SQL'</span>]
     ) <span class="sql-keyword">as</span> <span class="sql-column">skills</span>
-<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;
-          </code></pre>
+<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;</code></pre>
         </div>
       </div>
     </div>
@@ -127,33 +124,61 @@
     </div>
 </div>
 
-  <!-- Experience Section -->
-  <div class="section experience">
-    <h2>Work Experience</h2>
-    <div class="experience-item">
-      <h4>Marketing Assistant</h4>
-      <p>MIC Customs Solutions · Vienna, Austria</p>
-      <p>March 2022 - Present</p>
-      <ul>
-        <li>Improved CRM efficiency through automation and data cleanup initiatives.</li>
-        <li>Managed and optimized our Google Ads portfolio, focusing on search campaigns.</li>
-        <li>Contributed to the design refresh of the company website, including coding interactive elements.</li>
-        <li>Edited videos for social media and internal communications.</li>
-        <li>Became a go-to resource for the team on digital tools and technologies.</li>
-      </ul> </div>
-  </div>
-
-  <!-- Education Section -->
-  <div class="section education">
-    <h2>Relevant Education</h2>
-    <div class="education-item">
-      <h4>Diploma in Web Design & Digital Media</h4>
-      <p>Höhere Graphische Bundes-Lehr- und Versuchsanstalt</p>
-      <p>2018 - 2020</p>
-      <p>We built 3d models, edited videos and photos and built websites. A little bit of everything so one could specialize later on. Since I wasn't a fan of being my own boss or being an obsessive creative, I decided to stay an allrounder.</p>
+<div class="timeline-container">
+  <h2>What I did</h2>
+  <div class="timeline">
+    <div class="timeline-line"></div>
+    
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-title">Highschool</div>
+      <div class="timeline-date">2018</div>
+      <div class="timeline-content">
+        <div class="timeline-subtitle"><i class="fa-regular fa-file-image"></i> First Steps</div>
+        <div class="timeline-details">Learned Photoshop and IT in Optional Courses which set me on a path to becoming a Geek.</div>
+      </div>
     </div>
 
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-title">Diploma in Digital Media</div>
+      <div class="timeline-date">2018 - 2020</div>
+      <div class="timeline-content">
+        <div class="timeline-subtitle"><i class="fa-solid fa-desktop"></i> Höhere Graphische Bundes-Lehr- und Versuchsanstalt</div>
+        <div class="timeline-details">In this design college I build 3d models, edited videos, photos and built websites. </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-title">Paramedic</div> 
+      <div class="timeline-date">2020-2021</div>
+      <div class="timeline-content">
+        <div class="timeline-subtitle"> <i class="fa-solid fa-truck-medical"></i> Die Johanniter</div>
+        <div class="timeline-details">I became a paramedic for my civil duty because I wanted to do work that truly mattered and that's how I became a paramedic right during a pandemic!</div>
+      </div>
+    </div>
+
+
+    
+    <!-- Work Experience Timeline Item -->
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-title">Marketing Assistant</div>
+      <div class="timeline-date">2022 - Present</div>
+      <div class="timeline-content">
+        <div class="timeline-subtitle"><i class="fa-solid fa-chart-column"></i> MIC · Vienna, Austria</div>
+        <div class="timeline-details">
+         In my current position I am repsonsible for everything technical in the marketing team. Wether it be our CRM, Adobe Suite or other tools. 
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Timeline Item -->
+
+    
   </div>
+</div>
 
   <!-- Contact Section -->
   <div class="section contact">
@@ -161,7 +186,7 @@
       <p class="contact-text">Of course I have done more things with my life but I'm not here to waste your time. If you are so interested in me that you want to know even more then feel free to check out my hobbies page or contact me!</p>
       <div class="contact-links">
         <a href="index.html" class="contact-link">
-          <i class="fa-solid fa-arrow-left"></i>
+          <i class="fa-solid fa-backward"></i>
            Take me back
         </a>
         <a href="mailto:joloimer@gmail.com" class="contact-link">
