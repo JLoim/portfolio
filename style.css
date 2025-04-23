@@ -4,6 +4,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: 'Space Mono'; /* This is the name you'll use in your CSS */
+    src: url('fonts/SpaceMono-Regular.ttf') format('truetype'); /* Point to your file */
+    font-weight: 400; /* Matches the Regular weight */
+    font-style: normal;
+    font-display: swap; /* Recommended for performance: shows fallback text while loading */
+  }
+  
+  @font-face {
+    font-family: 'Space Mono'; /* Use the same family name */
+    src: url('fonts/SpaceMono-Bold.ttf') format('truetype'); /* Point to your file */
+    font-weight: 700; /* Matches the Bold weight */
+    font-style: normal;
+    font-display: swap; /* Recommended for performance */
+  }
 
 body {
     font-family: 'Space Mono', monospace;
