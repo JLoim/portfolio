@@ -223,6 +223,12 @@ h3 {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     display: inline-block;
+    margin-right: 0.5em; /* Add spacing between badges */
+    margin-bottom: 0.5em; /* Add vertical spacing for wrapping */
+}
+
+.proficiency:last-child {
+    margin-right: 0; /* Remove right margin from last badge */
 }
 
 .proficiency.advanced {
@@ -269,6 +275,13 @@ h3 {
 @media (max-width: 768px) {
     .competency-grid {
         grid-template-columns: 1fr;
+    }
+    /* Add: make badges wrap and add spacing for small screens */
+    .skill-detail {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em 0.5em;
+        align-items: flex-start;
     }
 }
 
@@ -824,5 +837,32 @@ h3 {
         opacity: 1;
         visibility: visible;
         position: relative;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Make split-container vertical on mobile */
+    .split-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        height: auto;
+        position: static;
+    }
+    .split-side {
+        width: 100%;
+        flex: 1 1 0;
+        min-height: 0;
+        height: auto;
+        padding: 1.5rem;
+    }
+    .split-side .side-image {
+        height: 100%;
+    }
+    .split-side h2,
+    .split-side p {
+        opacity: 1;
+        transform: none;
+        animation: none;
     }
 }
