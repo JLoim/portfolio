@@ -1,0 +1,196 @@
+/* Section-specific styles layered on top of work.css for a clean base */
+
+body {
+  background: var(--background, #0a0a0a);
+  color: var(--text, #fff);
+  font-family: 'Space Mono', monospace;
+  margin: 0;
+  min-height: 100vh;
+}
+.hobbies-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 180px;
+  background: #18181b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 2rem 0.5rem 2rem 0;
+  z-index: 100;
+  border-right: 2px solid #222;
+}
+.hobbies-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.hobbies-nav li {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.hobbies-nav .nav-link {
+  display: block;
+  color: #bdbdbd;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-family: 'Space Mono', monospace;
+  padding: 0.7rem 1.2rem 0.7rem 0.7rem;
+  border-radius: 0 20px 20px 0;
+  transition: background 0.2s, color 0.2s;
+}
+.hobbies-nav .nav-link.active,
+.hobbies-nav .nav-link:hover {
+  background: #00fff7;
+  color: #18181b;
+  font-weight: bold;
+}
+.hobbies-container {
+  max-width: 1100px;
+  margin-left: 220px;
+  margin-right: 0;
+  padding: 2rem 2rem 2rem 0;
+  transition: margin 0.3s, max-width 0.3s;
+}
+.section {
+  background: var(--card-bg, #1a1a1a);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin-bottom: 2.5rem;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+.section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+.section-desc {
+  font-size: 1.1rem;
+  color: var(--secondary, #94a3b8);
+  margin-top: 1.2rem;
+}
+
+/* D&D & Improv: creative, inspirational */
+.dd-improv {
+  background: linear-gradient(120deg, #f3e7e9 0%, #e3eeff 100%);
+  color: #3a1c71;
+  border: 2px solid #b388ff;
+}
+.dd-improv h1, .dd-improv h2 {
+  color: #7b4397;
+}
+.dice-roller, .improv-prompt {
+  background: #fffbe7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+#dice-result {
+  color: #7b4397;
+}
+#prompt-result {
+  color: #b388ff;
+}
+
+/* Gaming: GladOS/futuristic */
+.gaming {
+  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+  color: #e0e0e0;
+  border: 2px solid #00fff7;
+}
+.gaming h1, .gaming h2 {
+  color: #00fff7;
+  text-shadow: 0 0 8px #00fff7aa;
+}
+.achievement-carousel {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  overflow-x: auto;
+}
+.achievement-item {
+  background: #222b36;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
+  color: #00fff7;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 1px 4px #00fff733;
+}
+
+/* Personal Pursuits: outdoorsy/green */
+.personal-pursuits {
+  background: linear-gradient(120deg, #e0ffe0 0%, #b2f7b8 100%);
+  color: #22543d;
+  border: 2px solid #38a169;
+}
+.personal-pursuits h1 {
+  color: #38a169;
+}
+.pursuits-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+}
+.pursuit-icon {
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background: #e6fffa;
+  box-shadow: 0 2px 8px #38a16922;
+}
+.pursuit-icon:hover {
+  transform: scale(1.2) rotate(-8deg);
+  box-shadow: 0 4px 16px #38a16944;
+}
+#pursuit-desc {
+  min-height: 1.5rem;
+  font-size: 1.1rem;
+  color: #22543d;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .hobbies-nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    border-right: none;
+    border-bottom: 2px solid #222;
+    padding: 0.5rem 0;
+  }
+  .hobbies-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .hobbies-nav li {
+    margin: 0 1rem 0 0;
+  }
+  .hobbies-container {
+    margin-left: 0;
+    padding: 1rem 0.5rem;
+    max-width: 100vw;
+  }
+  .dd-improv-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .pursuits-icons {
+    gap: 1rem;
+  }
+  .section {
+    padding: 1rem 0.5rem;
+  }
+}
