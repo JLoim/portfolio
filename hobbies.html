@@ -9,10 +9,10 @@
 <body>
 
   <div class="hobbies-container">
-    <!-- D&D & Improv Section -->
-    <section class="section dd-improv" id="dd-improv">
-      <h1>🎲 D&D & Improv</h1>
-      <div class="dd-improv-content">
+    <!-- Creative Section: Battlemap -->
+    <section class="section battlemap-bg section-grid" id="dd-improv">
+      <div class="section-col left-col">
+        <h1 class="battlemap-title">🗺️ Creative (D&D & Improv)</h1>
         <div class="dice-roller">
           <h2>Dice Roller</h2>
           <div class="dice-controls">
@@ -39,37 +39,63 @@
           <div id="prompt-result"></div>
         </div>
       </div>
-      <p class="section-desc">D&D and Improv have taught me teamwork, creativity, and thinking on my feet. Here are some fun tools inspired by those hobbies!</p>
+      <div class="section-col right-col">
+        <div class="dnd-desc">
+          <h2>What I do for D&D & Improv</h2>
+          <p>D&D and Improv have taught me teamwork, creativity, and thinking on my feet. I love running games, building worlds, and helping others tell their stories. The tools on the left are inspired by my favorite tabletop moments!</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Gaming Section -->
-    <section class="section gaming" id="gaming">
-      <h1>🎮 Gaming</h1>
-      <div class="gaming-content">
-        <div class="gaming-achievements">
-          <h2>Achievements</h2>
-          <div class="achievement-carousel">
-            <!-- Placeholder for future carousel/gallery -->
-            <div class="achievement-item">🏆 Favorite Game: The Witcher 3</div>
-            <div class="achievement-item">🎯 100% Completion: Celeste</div>
-            <div class="achievement-item">🤝 Co-op Master: Overcooked</div>
+    <!-- Gaming Section: GladOS Terminal -->
+    <section class="section glados-terminal section-grid" id="gaming">
+      <div class="section-col left-col">
+        <div class="terminal-frame">
+          <div class="terminal-header-glados">
+            <span class="aperture-logo">◉</span>
+            <span class="terminal-title-glados">aperture@science:~$</span>
+          </div>
+          <div class="terminal-body-glados">
+            <h1 class="glados-title">🎮 Gaming</h1>
+            <div class="gaming-content">
+              <div class="gaming-achievements">
+                <h2>Achievements</h2>
+                <div class="achievement-carousel">
+                  <div class="achievement-item">🏆 Favorite Game: The Witcher 3</div>
+                  <div class="achievement-item">🎯 100% Completion: Celeste</div>
+                  <div class="achievement-item">🤝 Co-op Master: Overcooked</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <p class="section-desc">Gaming is where I unwind, strategize, and sometimes rage-quit. Here are some highlights!</p>
+      <div class="section-col right-col">
+        <div class="gaming-desc">
+          <h2>Why I Game</h2>
+          <p>Gaming is where I unwind, strategize, and sometimes rage-quit. I love exploring new worlds, mastering mechanics, and sharing co-op moments with friends. My favorite achievements are shown on the left!</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Personal Pursuits Section -->
-    <section class="section personal-pursuits" id="personal-pursuits">
-      <h1>🚴‍♂️ Personal Pursuits</h1>
-      <div class="pursuits-icons">
-        <div class="pursuit-icon" data-desc="Cycling: Exploring Vienna and beyond on two wheels.">🚴‍♂️</div>
-        <div class="pursuit-icon" data-desc="Bouldering: Solving problems on the wall, one hold at a time.">🧗‍♂️</div>
-        <div class="pursuit-icon" data-desc="Reading: Sci-fi, fantasy, and non-fiction adventures.">📚</div>
-        <div class="pursuit-icon" data-desc="Writing: Worldbuilding, stories, and campaign notes.">✍️</div>
+    <!-- Touching Some Grass Section: Nature Vibe -->
+    <section class="section touching-grass section-grid" id="touching-grass">
+      <div class="section-col left-col">
+        <h1>🌱 Touching Some Grass</h1>
+        <div class="pursuits-icons">
+          <div class="pursuit-icon" data-desc="Cycling: Exploring Vienna and beyond on two wheels.">🚴‍♂️</div>
+          <div class="pursuit-icon" data-desc="Bouldering: Solving problems on the wall, one hold at a time.">🧗‍♂️</div>
+          <div class="pursuit-icon" data-desc="Reading: Sci-fi, fantasy, and non-fiction adventures.">📚</div>
+          <div class="pursuit-icon" data-desc="Writing: Worldbuilding, stories, and campaign notes.">✍️</div>
+        </div>
+        <div id="pursuit-desc"></div>
       </div>
-      <div id="pursuit-desc"></div>
-      <p class="section-desc">A few more things I love, each teaching me something new and keeping life interesting.</p>
+      <div class="section-col right-col">
+        <div class="grass-desc">
+          <h2>Why I Touch Grass</h2>
+          <p>Getting outside, reading, and writing help me recharge and stay creative. Whether it’s cycling through Vienna or bouldering with friends, these pursuits keep life interesting and balanced.</p>
+        </div>
+      </div>
     </section>
   </div>
   <script src="hobbies.js"></script>
