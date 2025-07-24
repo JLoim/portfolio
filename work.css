@@ -714,4 +714,36 @@ h3 {
     .back-button.contact-position {
         position: static;
     }
+
+    main {
+        overflow: visible;
+    }
+
+    .split-container {
+        position: static;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .split-side {
+        width: 100%;
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .split-side:hover {
+        transform: none;
+    }
+
+    .split-side h2 {
+        font-size: 2em;
+        opacity: 1;
+        transform: translateY(0);
+        animation: none;
+    }
+
+    .split-side p {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
