@@ -3,216 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work</title>
-    <link rel="stylesheet" href="work.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Jonas Loimer | Workflow Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --dot-color: #cbd5e1;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --accent-primary: #3b82f6; /* Automation Blue */
+            --accent-secondary: #8b5cf6; /* Logic Purple */
+            --accent-success: #10b981;
+            --code-bg: #1e1e1e;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            /* Dot pattern background to simulate a canvas */
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 24px 24px;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- HEADER NODE --- */
+        .header-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-primary);
+            position: relative;
+        }
+
+        .profile-card::before {
+            content: "TRIGGER";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--accent-primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--text-main), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--accent-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-weight: 600;
+            color: var(--accent-secondary);
+            margin-top: 10px;
+        }
+
+        /* --- TERMINAL / CONFIG NODE --- */
+        .config-node {
+            background: var(--code-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            transform: rotate(1deg);
+            transition: transform 0.3s ease;
+        }
+
+        .config-node:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #3e3e3e;
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .filename {
+            margin-left: 15px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+
+        .sql-kw { color: #c678dd; }
+        .sql-str { color: #98c379; }
+        .sql-fn { color: #61afef; }
+        .sql-var { color: #e06c75; }
+
+        /* --- SECTION DIVIDERS --- */
+        .flow-arrow {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--dot-color);
+            font-size: 2rem;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* --- SKILLS GRID (INTEGRATIONS) --- */
+        .section-title {
+            text-align: center;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .integration-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .bg-marketing { background: #fff1f2; color: #e11d48; }
+        .bg-automation { background: #eff6ff; color: #2563eb; }
+        .bg-code { background: #f0fdf4; color: #16a34a; }
+
+        .card-h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .skill-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-pill {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: var(--text-sub);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-expert { border-left: 3px solid var(--accent-success); }
+        .pill-adv { border-left: 3px solid var(--accent-primary); }
+
+        /* --- TIMELINE AS LOGIC FLOW (FIXED) --- */
+        .workflow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0; /* Added padding so line doesn't get cut off */
+            display: flow-root; /* FIX: This forces the container to respect the height of floated children */
+        }
+
+        .workflow-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #e2e8f0;
+            transform: translateX(-50%);
+            z-index: 0;
+            border-radius: 4px;
+        }
+
+        .logic-step {
+            background: var(--card-bg);
+            width: 48%;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+            clear: both;
+            z-index: 1; /* Keep above the line */
+        }
+
+        .logic-step:nth-child(odd) { float: left; }
+        .logic-step:nth-child(even) { float: right; }
+
+        /* Connectors */
+        .logic-step::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--card-bg);
+            border: 4px solid #cbd5e1; /* Made darker to be more visible */
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Connecting lines from card to center */
+        .logic-step::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            height: 4px;
+            width: 26px; /* Reach the center line */
+            background: #cbd5e1;
+            z-index: 1;
+        }
+
+        .logic-step:nth-child(odd)::after { right: -42px; } 
+        .logic-step:nth-child(odd)::before { right: -25px; } 
+
+        .logic-step:nth-child(even)::after { left: -42px; }
+        .logic-step:nth-child(even)::before { left: -25px; }
+
+        .logic-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .logic-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; }
+        .logic-company { color: var(--accent-primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; display: block;}
+        .logic-desc { font-size: 0.95rem; color: var(--text-sub); }
+
+        /* --- CONTACT / FOOTER --- */
+        .footer-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 50px;
+            clear: both; /* Ensure it stays below floats */
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-outline {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header-section { grid-template-columns: 1fr; }
+            
+            /* Reset Timeline for Mobile */
+            .workflow-line { left: 20px; }
+            .logic-step { width: 100%; float: none; margin-left: 45px; width: calc(100% - 45px); margin-bottom: 30px; }
+            
+            .logic-step::before { display: none; } /* Hide horizontal connector on mobile */
+            
+            .logic-step:nth-child(odd)::after, 
+            .logic-step:nth-child(even)::after {
+                left: -37px; /* Align dots to the left line */
+                right: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  
-  <div class="container">
-  
-  <!-- About Me Section -->
-  <div class="section about-me">
-    <div class="about-content">
-      <div class="about-text">
-        <h2>About Me</h2>
-        <p>I get a kick out of making things work better. Whether it's automating a tedious data entry process or building a tool that saves the marketing team hours each week, I love finding smart solutions to everyday problems using tools we already own.
-           </p></br><p> Most of my friends call me a programmer in denial, I just prefer to say I am good at connecting things :^) </p>
-      </div>
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="terminal-buttons">
-            <span class="terminal-button close"></span>
-            <span class="terminal-button minimize"></span>
-            <span class="terminal-button maximize"></span>
-          </div>
-          <div class="terminal-title">profile.sql</div>
-        </div>
-        <div class="terminal-content"><pre><code class="language-sql" id="terminal-code"><span class="sql-keyword">SELECT</span> 
-    <span class="sql-string">'Jonas Loimer'</span> <span class="sql-keyword">as</span> <span class="sql-column">name</span>,
-    <span class="sql-string">'Marketing Automation Specialist'</span> <span class="sql-keyword">as</span> <span class="sql-column">role</span>,
-    <span class="sql-string">'Vienna, Austria'</span> <span class="sql-keyword">as</span> <span class="sql-column">location</span>,
-    <span class="sql-keyword">ARRAY</span>[
-        <span class="sql-string">'Process Automation'</span>,
-        <span class="sql-string">'Digital Marketing'</span>,
-        <span class="sql-string">'Data Analytics'</span>
-    ] <span class="sql-keyword">as</span> <span class="sql-column">interests</span>,
-    <span class="sql-function">JSON_OBJECT</span>(
-        <span class="sql-string">'marketing'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Adobe CS'</span>,<span class="sql-string">'CMS'</span>,<span class="sql-string">'GAds'</span>,<span class="sql-string">'CRM'</span>],
-        <span class="sql-string">'automation'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Automate'</span>, <span class="sql-string">'Dynamics 365'</span>],
-        <span class="sql-string">'analytics'</span>, <span class="sql-keyword">ARRAY</span>[<span class="sql-string">'Power Bi'</span>, <span class="sql-string">'Superset'</span>, <span class="sql-string">'SQL'</span>]
-    ) <span class="sql-keyword">as</span> <span class="sql-column">skills</span>
-<span class="sql-keyword">FROM</span> <span class="sql-table">profile</span>;</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Skills Showcase -->
-  <div class="skills-container">
-    <h2>What I am good at</h2>
-    <div class="competency-grid">
-        <!-- Design & Marketing Card -->
-        <div class="competency-card">
-            <div class="card-header">
-                🎨 Digital Marketing & Design
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <div class="header-section">
+            <div class="profile-card">
+                <div class="role-badge">Status: Ready to Automate</div>
+                <h1>Jonas Loimer</h1>
+                <p class="tagline">The glue between your apps & your team.</p>
+                <br>
+                <p class="intro-text">
+                    I'm a <b>Marketing Automation Specialist</b> who speaks both "Business" and "API." 
+                    I get a kick out of making things work better. Whether it's automating tedious data entry 
+                    or building a dashboard that saves the team hours, I love finding smart solutions 
+                    using the tools we already own.
+                </p>
+                <p class="intro-text">
+                    <small><em>Most friends call me a "programmer in denial." I just prefer to say I'm good at connecting the dots. :^)</em></small>
+                </p>
             </div>
-            <div class="card-content">
-                <div class="skill-item">
-                  <i class="fa-solid fa-icons"></i>
-                    <span>Adobe Creative Suite</span>
-                    
-                    <div class="skill-detail">
-                        <div class="proficiency advanced">Photoshop</div> <div class="proficiency advanced">Premiere</div> <div class="proficiency advanced">Illustrator</div> 
-                        <div class="skill-desc">Video production, graphic editing, asset creation</div>
+
+            <!-- THE LOGIC NODE (SQL) -->
+            <div class="config-node">
+                <div class="terminal-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
                     </div>
+                    <div class="filename">profile_config.sql</div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-google"></i>
-                    <span>SEA/SEO</span>
-                    <div class="skill-detail">
-                        <div class="proficiency expert">Google Ads</div> <div class="proficiency expert">Google Analytics</div>
-                        <div class="skill-desc">Portfolio management, search campaign optimization</div>
-                    </div>
+                <div class="terminal-body">
+<pre><code><span class="sql-kw">SELECT</span> 
+  <span class="sql-str">'Jonas Loimer'</span> <span class="sql-kw">AS</span> candidate,
+  <span class="sql-str">'Vienna, Austria'</span> <span class="sql-kw">AS</span> base,
+  <span class="sql-fn">JSON_OBJECT</span>(
+    <span class="sql-str">'focus'</span>, <span class="sql-kw">ARRAY</span>[
+      <span class="sql-str">'Process Automation'</span>,
+      <span class="sql-str">'Data Analytics'</span>
+    ],
+    <span class="sql-str">'superpower'</span>, <span class="sql-str">'Connecting Silos'</span>
+  ) <span class="sql-kw">AS</span> attributes
+<span class="sql-kw">FROM</span> 
+  talent_pool
+<span class="sql-kw">WHERE</span> 
+  skills <span class="sql-kw">LIKE</span> <span class="sql-str">'%No-Code%'</span> 
+  <span class="sql-kw">AND</span> logic = <span class="sql-kw">TRUE</span>;</code></pre>
                 </div>
             </div>
         </div>
 
-        <!-- Data & Automation Card -->
-        <div class="competency-card">
-            <div class="card-header">
-                ⚙️ Process Automation & Analytics
-            </div>
-            <div class="card-content">
-                <div class="skill-item">
-                    <i class="fas fa-robot"></i>
-                    <span>Workflow Automation</span>
-                    <div class="skill-detail">
-                        <div class="proficiency expert">Dynamics 365</div> <div class="proficiency expert">Power Automate</div>
-                        <div class="skill-desc">Connecting things, managing CRM flows</div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Data Visualization</span>
-                    <div class="skill-detail">
-                        <div class="proficiency advanced">Power BI</div> <div class="proficiency advanced">Apache Superset</div>
-                        <div class="skill-desc">Building Dashboards and Charts, Creating Datasets and doing data cleanup</div>
-                    </div>
+        <!-- FLOW ARROW -->
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- SKILLS / TOOLBOX SECTION -->
+        <h2 class="section-title"><i class="fa-solid fa-toolbox"></i> My Integration Toolbox</h2>
+        
+        <div class="integrations-grid">
+            <!-- Automation Card -->
+            <div class="integration-card">
+                <div class="card-icon bg-automation"><i class="fa-solid fa-robot"></i></div>
+                <h3 class="card-h3">Process & Automation</h3>
+                <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Automating workflows to reduce manual friction.</p>
+                <div class="skill-pill-container">
+                    <div class="skill-pill pill-expert"><i class="fab fa-microsoft"></i> Power Automate</div>
+                    <div class="skill-pill pill-expert"><i class="fa-solid fa-network-wired"></i> Dynamics 365</div>
+                    <div class="skill-pill pill-adv">Zapier / Make / N8N</div>
+                    <div class="skill-pill">Workflow Logic</div>
                 </div>
             </div>
+
+            <!-- Data Card (ICON FIXED) -->
+            <div class="integration-card">
+                <div class="card-icon bg-code"><i class="fa-solid fa-chart-line"></i></div>
+                <h3 class="card-h3">Data & Analytics</h3>
+                <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Visualizing success and cleaning messy datasets.</p>
+                <div class="skill-pill-container">
+                    <div class="skill-pill pill-adv"><i class="fa-solid fa-chart-simple"></i> Power BI</div>
+                    <div class="skill-pill pill-adv"><i class="fa-solid fa-table"></i> Apache Superset</div>
+                    <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL (Queries)</div>
+                    <div class="skill-pill">Data Cleanup</div>
+                </div>
+            </div>
+
+            <!-- Design/Web Card -->
+            <div class="integration-card">
+                <div class="card-icon bg-marketing"><i class="fa-solid fa-pen-ruler"></i></div>
+                <h3 class="card-h3">Creative & Web</h3>
+                <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Creating assets and managing web structures.</p>
+                <div class="skill-pill-container">
+                    <div class="skill-pill pill-adv"><i class="fab fa-adobe"></i> Adobe CS</div>
+                    <div class="skill-pill pill-expert"><i class="fab fa-google"></i> G-Ads/Analytics</div>
+                    <div class="skill-pill"><i class="fab fa-html5"></i> HTML/CSS</div>
+                    <div class="skill-pill">CMS (Typo3)</div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <h3>Technical Proficiencies</h3>
-    <div class="tools-grid">
-        <div class="tool-item">
-          <i class="fa-solid fa-database"></i>
-            <span>SQL</span>
-            <div class="tool-meta">Basic Queries</div>
+        <!-- FLOW ARROW -->
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- TIMELINE (LOGIC FLOW) FIXED -->
+        <h2 class="section-title"><i class="fa-solid fa-code-branch"></i> Execution History</h2>
+        
+        <div class="workflow-container">
+            <div class="workflow-line"></div>
+
+            <!-- Current Role -->
+            <div class="logic-step">
+                <div class="logic-date">2025 - Present</div>
+                <div class="logic-title">Marketing Automation Specialist</div>
+                <span class="logic-company">MIC · Vienna, Austria</span>
+                <p class="logic-desc">
+                    <i class="fa-solid fa-gear"></i> <b>Current State:</b> Managing marketing tech stack.<br>
+                    <i class="fa-solid fa-bolt"></i> <b>Action:</b> Optimizing workflows, connecting data sources for BI tools, and ensuring systems talk to each other efficiently.
+                </p>
+            </div>
+
+            <!-- Prev Role -->
+            <div class="logic-step">
+                <div class="logic-date">2022 - 2025</div>
+                <div class="logic-title">Marketing Assistant (Tech Focus)</div>
+                <span class="logic-company">MIC · Vienna, Austria</span>
+                <p class="logic-desc">
+                    Responsible for the technical backend of the marketing team. Managed the CRM, administered Adobe Suite, and acted as the first line of defense for tool-related issues.
+                </p>
+            </div>
+
+            <!-- Paramedic -->
+            <div class="logic-step">
+                <div class="logic-date">2020 - 2021</div>
+                <div class="logic-title">Paramedic (Civil Service)</div>
+                <span class="logic-company">Die Johanniter</span>
+                <p class="logic-desc">
+                    High-pressure environment management. Worked during the pandemic—learned how to prioritize critical tasks immediately.
+                </p>
+            </div>
+
+            <!-- Education -->
+            <div class="logic-step">
+                <div class="logic-date">2018 - 2020</div>
+                <div class="logic-title">Diploma in Digital Media</div>
+                <span class="logic-company">Graphische Bundes-Lehr- und Versuchsanstalt</span>
+                <p class="logic-desc">
+                    The foundation. 3D modeling, video editing, and web development basics.
+                </p>
+            </div>
         </div>
-        <div class="tool-item">
-            <i class="fas fa-code"></i>
-            <span>HTML/CSS/JS</span>
-            <div class="tool-meta">Frontend Fundamentals</div>
+
+        <!-- CONTACT / OUTPUT NODE -->
+        <div class="footer-card">
+            <h2><i class="fa-regular fa-paper-plane"></i> Ready to Connect?</h2>
+            <p style="margin-top:10px; color: #cbd5e1;">I am looking for roles where I can build tools, automate processes, and make teams faster. </p>
+             <p style="margin-top:10px; color: #cbd5e1;">If I caught your interest and you want to know more let's talk! </p>
+ 
+            
+            <div class="btn-group">
+                <a href="mailto:joloimer@gmail.com" class="btn btn-primary">
+                    <i class="fa-solid fa-envelope"></i> joloimer@gmail.com
+                </a>
+                <a href="tel:+436802472754" class="btn btn-outline">
+                    <i class="fa-solid fa-phone"></i> +43 680 247 2754
+                </a>
+               
+               
+               
+            </div>
         </div>
-        <div class="tool-item">
-          <i class="fa-solid fa-sitemap"></i>
-            <span>Typo3, Wordpress</span>
-            <div class="tool-meta">Enterprise CMS Systems</div>
-        </div>
+
     </div>
-</div>
-
-<div class="timeline-container">
-  <h2>What I did so far</h2>
-  <div class="timeline">
-    <div class="timeline-line"></div>
-    
-    <div class="timeline-item">
-      <div class="timeline-marker"></div>
-      <div class="timeline-title">Highschool</div>
-      <div class="timeline-date">2018</div>
-      <div class="timeline-content">
-        <div class="timeline-subtitle"><i class="fa-regular fa-file-image"></i> First Steps</div>
-        <div class="timeline-details">Learned Photoshop and IT in Optional Courses which set me on a path to becoming a Geek.</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-marker"></div>
-      <div class="timeline-title">Diploma in Digital Media</div>
-      <div class="timeline-date">2018 - 2020</div>
-      <div class="timeline-content">
-        <div class="timeline-subtitle"><i class="fa-solid fa-desktop"></i> Höhere Graphische Bundes-Lehr- und Versuchsanstalt</div>
-        <div class="timeline-details">In this design college I built 3d models, edited videos, photos and built websites. </div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-marker"></div>
-      <div class="timeline-title">Paramedic</div> 
-      <div class="timeline-date">2020-2021</div>
-      <div class="timeline-content">
-        <div class="timeline-subtitle"> <i class="fa-solid fa-truck-medical"></i> Die Johanniter</div>
-        <div class="timeline-details">I became a paramedic for my civil duty because I wanted to do work that truly mattered and that's how I became a paramedic right during a pandemic!</div>
-      </div>
-    </div>
-
-
-    
-    <div class="timeline-item">
-      <div class="timeline-marker"></div>
-      <div class="timeline-title">Marketing Assistant</div>
-      <div class="timeline-date">2022 - 2025</div>
-      <div class="timeline-content">
-        <div class="timeline-subtitle"><i class="fa-solid fa-chart-column"></i> MIC · Vienna, Austria</div>
-        <div class="timeline-details">
-         Was responsible for everything technical in the marketing team. Whether it be our CRM, Adobe Suite or other tools. 
-        </div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-marker"></div>
-      <div class="timeline-title">Marketing Automation Specialist</div>
-      <div class="timeline-date">2025 - Present</div>
-      <div class="timeline-content">
-        <div class="timeline-subtitle"><i class="fa-solid fa-chart-column"></i> MIC · Vienna, Austria</div>
-        <div class="timeline-details">
-         Currently managing marketing technologies, optimizing automation workflows and connecting data sources for visualizations in various BI tools.
-        </div>
-      </div>
-    </div>
-
-
-    
-  </div>
-</div>
-
-  <!-- Contact Section -->
-  <div class="section contact">
-    <div class="contact-content">
-      <p class="contact-text">Focused on showcasing my key skills and experience. Curious to know more? Explore my hobbies page or get in touch!
-      </p>
-      <div class="contact-links">
-        <a href="index.html" class="contact-link">
-          <i class="fa-solid fa-backward"></i>
-           Take me back
-        </a>
-        <a href="mailto:joloimer@gmail.com" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          joloimer@gmail.com
-        </a>
-        <a href="tel:+436802472754" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          +43 6802472754
-        </a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
 
 </body>
 </html>
