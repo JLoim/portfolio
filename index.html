@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonas Loimer | Select Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --left-bg: #0f172a;
+            --right-bg: #f0f2f5;
+            --left-btn: #3b82f6;
+            --right-btn: #1e293b;
+            --hover-width: 70%;
+            --other-width: 30%;
+            --speed: 800ms;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #333;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--left-bg);
+        }
+
+        /* --- BRANDING OVERLAY --- */
+        /* This sits on top of everything. 
+           mix-blend-mode: difference makes the text invert colors 
+           based on the background behind it. */
+        .brand-overlay {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            text-align: center;
+            pointer-events: none; /* Allows clicking through the text */
+            width: 100%;
+            mix-blend-mode: difference;
+            color: #fff;
+        }
+
+        .brand-name {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .brand-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* --- SPLIT SCREENS --- */
+        .split {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all var(--speed) cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .split.left {
+            left: 0;
+            background: var(--left-bg);
+            /* Subtle grid pattern */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: white;
+        }
+
+        .split.right {
+            right: 0;
+            background: var(--right-bg);
+            /* Subtle dot pattern */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--right-btn);
+        }
+
+        /* --- CONTENT INSIDE SPLITS --- */
+        .content {
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0.7;
+            transform: scale(0.9);
+            transition: all var(--speed) ease;
+        }
+        
+        /* Shift content away from the center text initially */
+        .split.left .content { transform: translateX(-50px) scale(0.9); }
+        .split.right .content { transform: translateX(50px) scale(0.9); }
+
+        .split h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Left Button Style */
+        .split.left .btn {
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+        .split.left .btn:hover {
+            background: white;
+            color: var(--left-bg);
+            border-color: white;
+        }
+
+        /* Right Button Style */
+        .split.right .btn {
+            background: var(--right-btn);
+            color: white;
+        }
+        .split.right .btn:hover {
+            background: transparent;
+            color: var(--right-btn);
+            border-color: var(--right-btn);
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- HOVER ANIMATIONS --- */
+        .split.left:hover { width: var(--hover-width); }
+        .split.right:hover { width: var(--hover-width); }
+
+        .container:has(.split.left:hover) .split.right { width: var(--other-width); }
+        .container:has(.split.right:hover) .split.left { width: var(--other-width); }
+
+        /* When hovering, bring the content into full focus and center it */
+        .split.left:hover .content { opacity: 1; transform: translateX(0) scale(1); }
+        .split.right:hover .content { opacity: 1; transform: translateX(0) scale(1); }
+
+        /* Hide the brand name slightly on hover to reduce noise, or keep it. 
+           Uncomment below to fade name on hover: */
+        /* .container:has(.split:hover) .brand-overlay { opacity: 0.2; } */
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media(max-width: 800px) {
+            .brand-name { font-size: 2.5rem; }
+            .brand-sub { font-size: 0.8rem; }
+            .split h2 { font-size: 1.5rem; }
+            
+            .split { width: 100%; height: 50%; }
+            .split.left { top: 0; }
+            .split.right { bottom: 0; top: auto; }
+
+            .split.left .content { transform: translateY(-20px) scale(0.9); }
+            .split.right .content { transform: translateY(20px) scale(0.9); }
+
+            .split.left:hover, .split.right:hover { width: 100%; height: 75%; z-index: 10; }
+            
+            .container:has(.split.left:hover) .split.right { height: 25%; width: 100%; }
+            .container:has(.split.right:hover) .split.left { height: 25%; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- CENTER BRANDING (Visually sits on top) -->
+        <div class="brand-overlay">
+            <div class="brand-name">Jonas Loimer</div>
+            <div class="brand-sub">Select your destination</div>
+        </div>
+
+        <!-- Left Side: Private Site -->
+        <div class="split left">
+            <div class="content">
+                <i class="fa-solid fa-cat icon-large"></i>
+                <h2>Private life page</h2>
+                <a href="https://bitsbyc.at/" class="btn">Login Required</a>
+            </div>
+        </div>
+
+        <!-- Right Side: Work Portfolio -->
+        <div class="split right">
+            <div class="content">
+                <i class="fa-solid fa-briefcase icon-large"></i>
+                <h2>Portfolio page</h2>
+                <a href="work.html" class="btn">View Portfolio</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
