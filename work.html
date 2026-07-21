@@ -223,6 +223,7 @@
         .bg-marketing { background: #fff1f2; color: #e11d48; }
         .bg-automation { background: #eff6ff; color: #2563eb; }
         .bg-code { background: #f0fdf4; color: #16a34a; }
+        .bg-ai { background: #f5f3ff; color: #7c3aed; }
 
         .card-h3 {
             font-size: 1.2rem;
@@ -406,12 +407,12 @@
                 <br>
                 <p class="intro-text">
                     I'm a <b>Marketing Automation Specialist</b> who speaks both "Business" and "API." 
-                    I get a kick out of making things work better. Whether it's automating tedious data entry 
-                    or building a dashboard that saves the team hours, I love finding smart solutions 
-                    using the tools we already own.
+                    I get a kick out of making things work better — automating tedious data entry, 
+                    wiring up AI to enrich our records, or building a dashboard that saves the team hours. 
+                    I start with the tools we already own, and write the code myself when no-code hits its limits.
                 </p>
                 <p class="intro-text">
-                    <small><em>Most friends call me a "programmer in denial." I just prefer to say I'm good at connecting the dots. :^)</em></small>
+                    <small><em>Used to call myself a "programmer in denial." Lately I've stopped denying it — currently leveling up my Python & Linux the hard way. :^)</em></small>
                 </p>
             </div>
 
@@ -432,15 +433,16 @@
   <span class="sql-fn">JSON_OBJECT</span>(
     <span class="sql-str">'focus'</span>, <span class="sql-kw">ARRAY</span>[
       <span class="sql-str">'Process Automation'</span>,
-      <span class="sql-str">'Data Analytics'</span>
+      <span class="sql-str">'Data & Analytics'</span>,
+      <span class="sql-str">'AI Integration'</span>
     ],
     <span class="sql-str">'superpower'</span>, <span class="sql-str">'Connecting Silos'</span>
   ) <span class="sql-kw">AS</span> attributes
 <span class="sql-kw">FROM</span> 
   talent_pool
 <span class="sql-kw">WHERE</span> 
-  skills <span class="sql-kw">LIKE</span> <span class="sql-str">'%No-Code%'</span> 
-  <span class="sql-kw">AND</span> logic = <span class="sql-kw">TRUE</span>;</code></pre>
+  skills <span class="sql-kw">LIKE</span> <span class="sql-str">'%Automation%'</span> 
+  <span class="sql-kw">AND</span> can_code = <span class="sql-kw">TRUE</span>;</code></pre>
                 </div>
             </div>
         </div>
@@ -459,22 +461,35 @@
                 <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Automating workflows to reduce manual friction.</p>
                 <div class="skill-pill-container">
                     <div class="skill-pill pill-expert"><i class="fab fa-microsoft"></i> Power Automate</div>
-                    <div class="skill-pill pill-expert"><i class="fa-solid fa-network-wired"></i> Dynamics 365</div>
-                    <div class="skill-pill pill-adv">Zapier / Make / N8N</div>
+                    <div class="skill-pill pill-expert"><i class="fa-solid fa-network-wired"></i> Dynamics 365 / CI-J</div>
+                    <div class="skill-pill pill-adv">Make / Zapier</div>
                     <div class="skill-pill">Workflow Logic</div>
                 </div>
             </div>
 
-            <!-- Data Card (ICON FIXED) -->
+            <!-- Data Card -->
             <div class="integration-card">
                 <div class="card-icon bg-code"><i class="fa-solid fa-chart-line"></i></div>
                 <h3 class="card-h3">Data & Analytics</h3>
                 <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Visualizing success and cleaning messy datasets.</p>
                 <div class="skill-pill-container">
                     <div class="skill-pill pill-adv"><i class="fa-solid fa-chart-simple"></i> Power BI</div>
-                    <div class="skill-pill pill-adv"><i class="fa-solid fa-table"></i> Apache Superset</div>
-                    <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL (Queries)</div>
+                    <div class="skill-pill pill-adv"><i class="fab fa-google"></i> GA4 / Looker Studio</div>
+                    <div class="skill-pill pill-adv"><i class="fa-solid fa-database"></i> SQL</div>
                     <div class="skill-pill">Data Cleanup</div>
+                </div>
+            </div>
+
+            <!-- AI & Scripting Card -->
+            <div class="integration-card">
+                <div class="card-icon bg-ai"><i class="fa-solid fa-brain"></i></div>
+                <h3 class="card-h3">AI & Scripting</h3>
+                <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Wiring LLMs into workflows and scripting the rest.</p>
+                <div class="skill-pill-container">
+                    <div class="skill-pill pill-adv"><i class="fa-brands fa-python"></i> Python</div>
+                    <div class="skill-pill pill-adv"><i class="fa-solid fa-plug"></i> LLM API Integration</div>
+                    <div class="skill-pill"><i class="fa-solid fa-terminal"></i> Git & Linux</div>
+                    <div class="skill-pill">AI-Assisted Tooling</div>
                 </div>
             </div>
 
@@ -485,9 +500,9 @@
                 <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-sub);">Creating assets and managing web structures.</p>
                 <div class="skill-pill-container">
                     <div class="skill-pill pill-adv"><i class="fab fa-adobe"></i> Adobe CS</div>
-                    <div class="skill-pill pill-expert"><i class="fab fa-google"></i> G-Ads/Analytics</div>
-                    <div class="skill-pill"><i class="fab fa-html5"></i> HTML/CSS</div>
-                    <div class="skill-pill">CMS (Typo3)</div>
+                    <div class="skill-pill pill-expert"><i class="fab fa-google"></i> Google Ads</div>
+                    <div class="skill-pill"><i class="fab fa-html5"></i> HTML / CSS</div>
+                    <div class="skill-pill">CMS (TYPO3)</div>
                 </div>
             </div>
         </div>
@@ -507,8 +522,10 @@
                 <div class="logic-title">Marketing Automation Specialist</div>
                 <span class="logic-company">MIC · Vienna, Austria</span>
                 <p class="logic-desc">
-                    <i class="fa-solid fa-gear"></i> <b>Current State:</b> Managing marketing tech stack.<br>
-                    <i class="fa-solid fa-bolt"></i> <b>Action:</b> Optimizing workflows, connecting data sources for BI tools, and ensuring systems talk to each other efficiently.
+                    <i class="fa-solid fa-robot"></i> Built AI-assisted automation flows that enrich and classify CRM records using LLM APIs, cutting out hours of manual research.<br>
+                    <i class="fa-solid fa-gauge-high"></i> Redesigned lead scoring into separate, transparent models so sales can actually trust the numbers.<br>
+                    <i class="fa-brands fa-python"></i> Wrote Python to clean, classify and re-import thousands of contacts, and to catch data issues before they hit the CRM.<br>
+                    <i class="fa-solid fa-chart-column"></i> Replaced manual reporting with self-service BI pipelines (Power BI, GA4, Looker Studio).
                 </p>
             </div>
 
